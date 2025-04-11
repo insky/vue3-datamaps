@@ -7,9 +7,9 @@ It is a Vue 3 port of the [Vue port](https://github.com/Seungwoo321/vue-datamaps
 [![npm](https://flat.badgen.net/npm/license/vue-datamaps)](https://flat.badgen.net/npm/license/vue-datamaps)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/vue-datamaps/badge)](https://www.jsdelivr.com/package/npm/vue-datamaps) -->
 
-<!-- ## Live demo
+## Live demo
 
-[link](https://jsfiddle.net/front123/437a5wvf/) -->
+[link](https://insky.github.io/vue3-datamaps/)
 
 ## Run demo
 

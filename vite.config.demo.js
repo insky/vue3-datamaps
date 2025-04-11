@@ -5,6 +5,7 @@ import replace from '@rollup/plugin-replace'
 
 export default defineConfig(({ command, mode, ssrBuild }) => {
     return {
+        base: '/vue3-datamaps/', // Base path for GitHub Pages
         plugins: [
             vue(),
             replace({
@@ -275,7 +276,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         build: {
             outDir: 'public',
-            emptyOutDir: true,
+            emptyOutDir: true, // Clean the directory before each build
         },
         resolve: {
             alias: {
