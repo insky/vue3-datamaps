@@ -6,14 +6,14 @@ function val(datumValue, optionsValue, context) {
     context = optionsValue; // eslint-disable-line no-param-reassign
     optionsValue = undefined; // eslint-disable-line no-param-reassign
   }
-  var value = typeof datumValue !== 'undefined' ? datumValue : optionsValue;
+  const value = typeof datumValue !== 'undefined' ? datumValue : optionsValue;
 
   if (typeof value === 'undefined') {
     return null;
   }
 
   if (typeof value === 'function') {
-    var fnContext = [ context ];
+    const fnContext = [ context ];
     if (context.geography) {
       fnContext = [ context.geography, context.data ];
     }

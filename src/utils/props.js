@@ -190,7 +190,7 @@ export default {
                 return accumulator
             }, {})
         },
-        geograpphyConfigOptions () {
+        geographyConfigOptions () {
             return {
                 ...this.default.geographyConfig,
                 ...this.geographyConfig
