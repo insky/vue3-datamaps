@@ -26,6 +26,7 @@
         :data="awsRegionData"
         @show:popup="showPopupRegion"
         @hide:popup="hidePopup"
+        @click:aws-region="handleAwsClickCallback"
       />
       <layer-bubble
         v-if="bubbles && pathData.length > 0"
@@ -181,6 +182,9 @@ export default {
     },
     handleClickCallback({ event, item, index }) {
       this.$emit('click:bubble', { event, item, index });
+    },
+    handleAwsClickCallback(item) {
+      this.$emit('click:aws-region', item);
     },
     resize() {
       this.svgWidth = this.$el;

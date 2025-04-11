@@ -15,6 +15,7 @@
             :style="outerStyles(item, index)"
             @mouseover="handleMouseOver($event, item)"
             @mouseout="handleMouseOut"
+            @click="$emit('click:aws-region', item)"
         >
         <animate attributeName="r" begin="200ms" dur="600ms" from="0" to="11"></animate>
         </circle>

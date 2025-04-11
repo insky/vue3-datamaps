@@ -9,6 +9,7 @@
             :awsRegionsConfig="awsRegionsConfig"
             :geographyConfig="geographyConfig"
             @custom:popup-region="customPopupRegion"
+            @click:aws-region="clickAwsRegion"
         >
             <template #hoverRegionInfo v-if="hoverData.name">
                 <div class="hoverinfo">
@@ -36,7 +37,10 @@ export default {
     },
     methods: {
         customPopupRegion ({ datum }) {
-            this.hoverData = datum
+          this.hoverData = datum
+        },
+        clickAwsRegion(item) {
+          console.log('clicked', item)
         }
     }
 }
