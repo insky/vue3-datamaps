@@ -6,7 +6,7 @@
           :d="pathAndProjection.path(item)"
           :class="`datamaps-styleAttributes ${item.id || item.properties.code_hasc}`"
           :fill="fillColor(item)"
-          :style="pathStyle[item.id || item.properties.code_hasc] || pathStyle"
+          :style="pathStyle(item)"
           @mouseover="handleMouseOver($event, item)"
           @mouseout="handleMouseOut($event, item)"
         />
@@ -133,7 +133,7 @@ export default {
       return (this.awsRegionsConfig && this.awsRegionsConfig.region) || regions;
     },
     isPopupOn() {
-      return (this.geograpphyConfigOptions.popupOnHover || this.bubblesConfigOptions.popupOnHover) && (this.showHoverInfo || this.showHoverBubbleInfo || this.showHoverArcInfo || this.showHoverRegionInfo);
+      return (this.geographyConfigOptions.popupOnHover || this.bubblesConfigOptions.popupOnHover) && (this.showHoverInfo || this.showHoverBubbleInfo || this.showHoverArcInfo || this.showHoverRegionInfo);
     },
     svgWidth: {
       get() {
@@ -150,13 +150,6 @@ export default {
       set(element) {
         this.viewbox.height = element.getBoundingClientRect().height;
       }
-    },
-    pathStyle() {
-      return Object.keys(this.styleAttributes).length > 0 ? this.styleAttributes : {
-        'stroke-width': this.geograpphyConfigOptions.borderWidth,
-        'stroke-opacity': this.geograpphyConfigOptions.borderOpacity,
-        'stroke': this.geograpphyConfigOptions.borderColor
-      };
     },
     pathAndProjection: {
       get() {
@@ -179,6 +172,13 @@ export default {
     window.removeEventListener('resize', this.resize);
   },
   methods: {
+    pathStyle(item) {
+      return this.styleAttributes[item.id || item.properties.code_hasc] || {
+        'stroke-width': this.geographyConfigOptions.borderWidth,
+        'stroke-opacity': this.geographyConfigOptions.borderOpacity,
+        'stroke': this.geographyConfigOptions.borderColor
+      };
+    },
     handleClickCallback({ event, item, index }) {
       this.$emit('click:bubble', { event, item, index });
     },
@@ -201,13 +201,13 @@ export default {
       return color;
     },
     draw() {
-      if (this.geograpphyConfigOptions.dataUrl && this.dataType === 'csv' && (this.geoData && this.geoData.slice)) {
+      if (this.geographyConfigOptions.dataUrl && this.dataType === 'csv' && (this.geoData && this.geoData.slice)) {
         let tmpData = {};
         this.geoData.forEach(() => item => { tmpData[item.id || item.properties.code_hasc] = item; });
         this.geoData = tmpData;
         this.drawSubunits(this.geoData);
-      } else if (this.geograpphyConfigOptions.dataUrl && this.dataType !== 'csv') {
-        fetch(this.geograpphyConfigOptions.dataUrl).then(response => {
+      } else if (this.geographyConfigOptions.dataUrl && this.dataType !== 'csv') {
+        fetch(this.geographyConfigOptions.dataUrl).then(response => {
           return response.json();
         }).then(result => {
           this.geoData = result;
@@ -220,12 +220,12 @@ export default {
       }
     },
     drawSubunits(data) {
-      if (this.geograpphyConfigOptions.hideAntarctica) {
+      if (this.geographyConfigOptions.hideAntarctica) {
         this.pathData = data.features.filter(function(feature) {
           return feature.id !== 'ATA';
         });
       }
-      if (this.geograpphyConfigOptions.hideHawaiiAndAlaska) {
+      if (this.geographyConfigOptions.hideHawaiiAndAlaska) {
         this.pathData = data.features.filter(function(feature) {
           return feature.id !== 'HI' && feature.id !== 'AK';
         });
@@ -273,15 +273,15 @@ export default {
     },
     handleMouseOver(event, d) {
       const target = event.target;
-      const previousAttributes = {
+      const _previousAttributes = {
         'fill': target.style['fill'],
         'stroke': target.style['stroke'],
         'stroke-width': target.style['stroke-width'],
         'fill-opacity': target.style['fill-opacity']
       };
-      this.previousAttributes[d.id || d.properties.code_hasc] = previousAttributes;
+      this.previousAttributes[d.id || d.properties.code_hasc] = _previousAttributes;
 
-      const { highlightOnHover, popupOnHover, highlightFillColor, highlightBorderColor, highlightBorderWidth, highlightBorderOpacity, highlightFillOpacity } = this.geograpphyConfigOptions;
+      const { highlightOnHover, popupOnHover, highlightFillColor, highlightBorderColor, highlightBorderWidth, highlightBorderOpacity, highlightFillOpacity } = this.geographyConfigOptions;
       const datum = this.data[d.id || d.properties.code_hasc] || {};
 
       if (highlightOnHover) {
@@ -297,7 +297,7 @@ export default {
       if (popupOnHover) this.showPopup({ event, geography: d, datum: this.data[d.id || d.properties.code_hasc] });
     },
     handleMouseOut(event, d) {
-      const { highlightOnHover, popupOnHover } = this.geograpphyConfigOptions;
+      const { highlightOnHover, popupOnHover } = this.geographyConfigOptions;
       if (highlightOnHover || popupOnHover) {
         const data = this.previousAttributes[d.id || d.properties.code_hasc];
         this.styleAttributes[d.id || d.properties.code_hasc] = data;
