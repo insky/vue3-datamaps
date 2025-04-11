@@ -1,6 +1,6 @@
 {
     "name": "vue3-datamaps",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "type": "module",
     "main": "dist/vue3-datamaps.mjs",
     "files": [
@@ -9,7 +9,7 @@
     "exports": {
         ".": {
             "import": "./dist/vue3-datamaps.mjs",
-            "require": "./dist/vue3-datamaps.umd.js"
+            "require": "./dist/vue3-datamaps.umd.cjs"
         }
     },
     "repository": {
