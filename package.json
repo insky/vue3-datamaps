@@ -1,6 +1,6 @@
 {
     "name": "vue3-datamaps",
-    "version": "0.1.8",
+    "version": "0.2.0",
     "type": "module",
     "main": "dist/vue3-datamaps.mjs",
     "files": [
