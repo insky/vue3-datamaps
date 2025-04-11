@@ -2,10 +2,10 @@
 
 It is a Vue 3 port of the [Vue port](https://github.com/Seungwoo321/vue-datamaps) of the javascript-based [DataMaps](https://datamaps.github.io/)
 
-<!-- [![npm](https://flat.badgen.net/npm/v/vue-datamaps)](https://npmjs.com/package/vue-datamaps)
-[![npm](https://flat.badgen.net/npm/dt/vue-datamaps)](https://npmjs.com/package/vue-datamaps)
-[![npm](https://flat.badgen.net/npm/license/vue-datamaps)](https://flat.badgen.net/npm/license/vue-datamaps)
-[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/vue-datamaps/badge)](https://www.jsdelivr.com/package/npm/vue-datamaps) -->
+<!-- [![npm](https://flat.badgen.net/npm/v/vue3-datamaps)](https://npmjs.com/package/vue3-datamaps)
+[![npm](https://flat.badgen.net/npm/dt/vue3-datamaps)](https://npmjs.com/package/vue3-datamaps)
+[![npm](https://flat.badgen.net/npm/license/vue3-datamaps)](https://flat.badgen.net/npm/license/vue3-datamaps)
+[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/vue3-datamaps/badge)](https://www.jsdelivr.com/package/npm/vue3-datamaps) -->
 
 ## Live demo
 
