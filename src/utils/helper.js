@@ -13,7 +13,7 @@ function val(datumValue, optionsValue, context) {
   }
 
   if (typeof value === 'function') {
-    const fnContext = [ context ];
+    let fnContext = [ context ];
     if (context.geography) {
       fnContext = [ context.geography, context.data ];
     }
