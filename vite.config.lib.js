@@ -284,7 +284,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             lib: {
                 entry: resolve(__dirname, 'src/index.js'),
                 name: 'VueDatamaps',
-                fileName: 'vue-datamaps'
+                fileName: 'vue3-datamaps'
             },
             rollupOptions: {
                 external: [ 'vue' ],
