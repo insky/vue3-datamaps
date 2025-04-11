@@ -35,17 +35,20 @@ $ npm install vue3-datamaps
 ### Required
 
 * json data is no longer required.
+* CSS styles must be imported separately
 
 #### Global
 
 main.js
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import VueDatamaps from 'vue3-datamaps'
+import 'vue3-datamaps/style.css'
 
-Vue.use(VueDatamaps)
-
+const app = createApp(App)
+app.use(VueDatamaps)
+app.mount('#app')
 ```
 
 vue template
@@ -70,6 +73,7 @@ vue template
 </template>
 <script setup>
 import { VueDatamaps } from 'vue3-datamaps'
+import 'vue3-datamaps/style.css'
 </script>
 ```
 
