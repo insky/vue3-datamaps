@@ -18,6 +18,16 @@
         :projection="pathAndProjection.projection"
         :path="pathAndProjection.path"
       />
+      <layer-arc
+        v-if="arc && pathData.length > 0"
+        :arcConfig="propsData.arcConfig"
+        :data="propsData.arcGeoData"
+        :projection="pathAndProjection.projection"
+        :path="pathAndProjection.path"
+        :awsRegions="awsRegions"
+        @show:popup="showPopupArc"
+        @hide:popup="hidePopup"
+      />
       <layer-aws-regions
         v-if="awsRegions"
         :awsRegionsConfig="awsRegionsConfigOptions"
@@ -37,18 +47,7 @@
         @click:bubble="handleClickCallback"
         @show:popup="showPopupBubble"
         @hide:popup="hidePopup"
-      ></layer-bubble>
-      <layer-arc
-        v-if="arc && pathData.length > 0"
-        :arcConfig="propsData.arcConfig"
-        :data="propsData.arcGeoData"
-        :projection="pathAndProjection.projection"
-        :path="pathAndProjection.path"
-        :awsRegions="awsRegions"
-        @show:popup="showPopupArc"
-        @hide:popup="hidePopup"
-      >
-      </layer-arc>
+      />
     </svg>
     <div v-if="isPopupOn || true"
       class="datamaps-hoverover"
