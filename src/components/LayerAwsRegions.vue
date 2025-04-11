@@ -1,24 +1,25 @@
 <template>
     <g class="bubbles-aws-regions" v-if="projection">
-        <circle v-for="(item, index) in filterdData" :key="`${index}-inner`" class="circle-inner" :class="useClass(item)"
-            :cx="latLng(item.coordinates)[0]"
-            :cy="latLng(item.coordinates)[1]"
-            :r="4"
-            :style="innerStyles(item, index)"
-        >
-        <animate attributeName="r" begin="200ms" dur="600ms" from="0" to="3"></animate>
-        </circle>
-        <circle v-for="(item, index) in filterdData" :key="`${index}-outer`" class="circle-outer" :class="useClass(item)"
+      <g class="circle-group" v-for="(item, index) in filterdData" :key="`${index}-group`" @click="$emit('click:aws-region', item)">
+        <circle class="circle-outer" :class="useClass(item)"
             :cx="latLng(item.coordinates)[0]"
             :cy="latLng(item.coordinates)[1]"
             :r="6"
             :style="outerStyles(item, index)"
             @mouseover="handleMouseOver($event, item)"
             @mouseout="handleMouseOut"
-            @click="$emit('click:aws-region', item)"
         >
-        <animate attributeName="r" begin="200ms" dur="600ms" from="0" to="11"></animate>
+          <animate attributeName="r" begin="200ms" dur="600ms" from="0" to="11"></animate>
         </circle>
+        <circle class="circle-inner" :class="useClass(item)"
+            :cx="latLng(item.coordinates)[0]"
+            :cy="latLng(item.coordinates)[1]"
+            :r="4"
+            :style="innerStyles(item, index)"
+        >
+          <animate attributeName="r" begin="200ms" dur="600ms" from="0" to="3"></animate>
+        </circle>
+      </g>
     </g>
 </template>
 
